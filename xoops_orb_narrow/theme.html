@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<{$xoops_langcode}>" lang="<{$xoops_langcode}>">
+<head>
+<{$xoops_module_header}>
+<meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>" />
+<meta http-equiv="content-language" content="<{$xoops_langcode}>" />
+<meta name="robots" content="<{$xoops_meta_robots}>" />
+<meta name="keywords" content="<{$xoops_meta_keywords}>" />
+<meta name="description" content="<{$xoops_meta_description}>" />
+<meta name="rating" content="<{$xoops_meta_rating}>" />
+<meta name="author" content="<{$xoops_meta_author}>" />
+<meta name="copyright" content="<{$xoops_meta_copyright}>" />
+<title><{$xoops_sitename}> - <{$xoops_pagetitle}></title>
+<link href="<{$xoops_url}>/favicon.ico" rel="SHORTCUT ICON" />
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_url}>/xoops.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_themecss}>" />
+<script type="text/javascript">
+<!--
+<{$xoops_js}>
+//-->
+</script>
+</head>
+<body>
+<{include_php file="$xoops_rootpath/themes/xoops_orb_narrow/ex_assign.php"}> <br />
+<table border="0" cellpadding="0" cellspacing="0" style="width:720px; ">
+  <tr>
+    <td rowspan="2" style="width:230px; "></td>
+    <td id="centercolumn">
+<br />
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr> <{if !$xoops_isuser}>
+        
+          <td class="text_menu"><form style="margin-top: 0px;" action="<{$xoops_url}>/user.php" method="post">id:
+              <input type="text" name="uname" size="8" value="<{$block.unamevalue}>" maxlength="25"style="font-size:11px; padding:0px;" />
+          pass:
+          <input type="password" name="pass" size="8" maxlength="32"style="font-size:9px; padding:0px;" />
+          <input type="hidden" name="xoops_redirect" value="<{$xoops_requesturi}>" />
+          <input type="hidden" name="op" value="login" />
+          <input type="submit" value="Login" style="font-size:10px; padding:0px;" />
+          <a href="<{$xoops_url}>/user.php#lost">PassºÆÁ÷</a> / <a href="<{$xoops_url}>/register.php">¿·µ¬ÅÐÏ¿</a></form></td>
+        
+  <{else}>
+        <td class="text_menu">| <a href="<{$xoops_url}>/user.php"> view Account </a> | <a href="<{$xoops_url}>/edituser.php"> edit </a> | <a href="<{$xoops_url}>/notifications.php"> notification </a> | <a href="<{$xoops_url}>/user.php?op=logout"> Logout </a> | <{if $ex_new_messages > 0}> <a class="highlight" href="<{$xoops_url}>/viewpmsg.php">inbox(<span style="color:#ff0000; font-weight: bold;"><{$ex_new_messages}></span>)</a> <{else}> <a href="<{$xoops_url}>/viewpmsg.php">inbox</a> <{/if}> | <{if $xoops_isadmin}> <a href="<{$xoops_url}>/admin.php">admin</a> | <{/if}> </td>
+  <{/if}> </tr>
+  </table>
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="text_menu"> | <a href="<{$xoops_url}>/">Home</a> | <{foreach item=module from=$ex_mainmenu.modules }> <a href="<{$xoops_url}>/modules/<{$module.directory}>/"><{$module.name}></a> | <{/foreach}> </td>
+  </tr>
+  <tr>
+    <td class="text_menu"><{if $ex_moduledir }> <{foreach item=module from=$ex_mainmenu.modules }> <{if $module.directory == $ex_moduledir && $module.sublinks }>| <{foreach item=sublink from=$module.sublinks}> <a href="<{$sublink.url}>"> <{$sublink.name}></a> | <{/foreach}> <{/if}> <{/foreach}> <{/if}> </td>
+  </tr>
+</table>
+<br /><br />
+<br />
+
+<{if $xoops_showcblock == 1}>
+      <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td id="centerLcolumn"><{foreach item=block from=$xoops_clblocks}> <{if $block.title|regex_replace:"/.*nene/":"none" ne "none"}>
+            <div class="blockTitle"><{$block.title}></div>
+        <{/if}>
+            <div class="blockContent"><{$block.content}></div>
+        <{/foreach}> </td>
+          <td id="centerRcolumn"><{foreach item=block from=$xoops_crblocks}> <{if $block.title|regex_replace:"/.*nene/":"none" ne "none"}>
+            <div class="blockTitle"><{$block.title}></div>
+        <{/if}>
+            <div class="blockContent"><{$block.content}></div>
+        <{/foreach}> </td>
+        </tr>
+        <tr>
+          <td id="centerCcolumn" colspan="2"><{foreach item=block from=$xoops_ccblocks}> <{if $block.title|regex_replace:"/.*nene/":"none" ne "none"}>
+            <div class="blockTitle"><{$block.title}></div>
+        <{/if}>
+            <div class="blockContent"><{$block.content}></div>
+            <br />
+<{/foreach}> </td>
+        </tr>
+      </table>
+      <{/if}>
+      <!-- End display center blocks -->
+      <div id="content"><{$xoops_contents}><br />
+    <br />
+    <div align="center"><{$xoops_banner}>
+  </div><br /><br />
+</div>
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td class="text_menu"> | <a href="<{$xoops_url}>/">Home</a> | <{foreach item=module from=$ex_mainmenu.modules }> <a href="<{$xoops_url}>/modules/<{$module.directory}>/"><{$module.name}></a> | <{/foreach}> </td>
+    </tr>
+    <tr>
+      <td class="text_menu"><{if $ex_moduledir }> <{foreach item=module from=$ex_mainmenu.modules }> <{if $module.directory == $ex_moduledir && $module.sublinks }>| <{foreach item=sublink from=$module.sublinks}> <a href="<{$sublink.url}>"> <{$sublink.name}></a> | <{/foreach}> <{/if}> <{/foreach}> <{/if}> </td>
+    </tr>
+  </table>
+	</td>
+	
+  </tr>
+  <tr>
+    <td id="footer"><{$xoops_footer}> theme design by <a href="http://2bcool.net" target="_blank">BCOOL </a></td>
+  </tr>
+</table>
+</body></html>
